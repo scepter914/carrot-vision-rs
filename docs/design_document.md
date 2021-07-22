@@ -7,7 +7,7 @@
     - camera_external_param.yaml
     - target_tracking_param.yaml
     - calibration_camera_param.yaml
-  - target_tracking.rs --mode=test/debug/ --output=$HOME/result
+  - target_tracking.rs
   - calibration_camera.rs
   - calculate_fps.rs
 - /tests
@@ -62,6 +62,12 @@
 
 - 画像で通信しないようにする
 - inputは無しでoutputに画像をcompressしてdebugするかどうか
+
+### target_tracking.rs
+
+```
+target_tracking --debug={False/True} --mode={camera, image, video} --input={hoge/image.png, hoge/video.mp4} --output={/result} --config={config/config.yaml}
+```
 
 ### threshold_detection.rs: 
 
