@@ -1,8 +1,9 @@
 extern crate image;
 // extern crate imageproc;
 
-use riprs::object_detection::rgb_threshold;
+use riprs::object_detection::threshold_detection;
 use riprs::riprs_cv_lib::logger;
+use riprs::
 
 fn main() {
     let logger = logger::Logger::new("data/result/");
@@ -11,7 +12,7 @@ fn main() {
     // let path_image = "data/ball_2.jpg";
     let input_image = image::open(input_image_path).unwrap().to_rgb8();
 
-    let rgb_threshold = rgb_threshold::RGBThreshold {
+    let rgb_threshold = rgb_convertor::RGBThreshold {
         r_high: 255,
         r_low: 100,
         g_high: 200,
