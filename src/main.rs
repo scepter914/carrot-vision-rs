@@ -13,17 +13,18 @@ fn main() {
 
     let rgb_threshold = rgb_threshold::RGBThreshold {
         r_high: 255,
-        r_low: 0,
-        g_high: 255,
+        r_low: 100,
+        g_high: 200,
         g_low: 0,
         b_high: 45,
         b_low: 0,
     };
-    let binarized_image = rgb_threshold::binalize_rgb(&input_image, &rgb_threshold);
-    binarized_image
-        .save(logger.get_full_path("result.png"))
-        .unwrap();
-    let rgb_disassembled_image = rgb_threshold::combine_rgb_disassembled_image(&input_image);
+    // let binarized_image = rgb_threshold::binalize_rgb(&input_image, &rgb_threshold);
+    // binarized_image
+    //     .save(logger.get_full_path("result.png"))
+    //     .unwrap();
+    let rgb_disassembled_image =
+        rgb_threshold::combine_rgb_disassembled_image(&input_image, &rgb_threshold);
     rgb_disassembled_image
         .save(logger.get_full_path("result_rgb_layer.png"))
         .unwrap();
