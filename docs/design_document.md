@@ -20,7 +20,7 @@
   - /object_detection
     - threshold_detection.rs
     - threshold_detection_depth.rs
-    - efficient_det.rs
+    - dnn_detection.rs
   - /ros
     - ros_pub.rs
 - /ros_package
@@ -44,7 +44,6 @@
     - rgbd_convertor.rs
   - /interface
     - camera_interface.rs: input:camera
-      - RGBD -> RGB
     - image_interface.rs: input, output: mp4
     - output_interface.rs: output:eathernet
 
@@ -60,7 +59,7 @@
     - evaluate.rs
     - inference.rs
     - /python
-      - train.python
+      - train.py
 
 ## Detail
 ### ros_package
