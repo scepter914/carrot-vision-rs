@@ -13,7 +13,7 @@
 - /tests
 - /src
   - /tool
-      - calibration_camera.rs
+    - calibration_camera.rs
   - /geometory
     - self_window.rs: input cg return x1, y1, x2, y2
     - object_2d_to_3d.rs circle, rectangleの3次元推定(model仮定)
@@ -21,11 +21,11 @@
     - threshold_detection.rs
     - threshold_detection_depth.rs
     - efficient_det.rs
+  - /ros
+    - ros_pub.rs
 - /ros_package
   - package.xml
   - /launch
-  - /src
-    - ros_pub.rs
 
 ### /riprs_cv_lib
 
@@ -35,8 +35,13 @@
     - performance.rs (calculate time)
     - logger.rs
   - /image
-    - image_converter.rs: RGB to Gray, RGB to HSV, 2値化
-    - visualization.rs
+    - visualization.rs: cg, bbox
+  - /convertor
+    - visualize_rgb_threshold.rs
+    - rgb_convertor.rs
+    - hsv_convertor.rs
+    - gray_convertor.rs
+    - rgbd_convertor.rs
   - /interface
     - camera_interface.rs: input:camera
       - RGBD -> RGB
@@ -85,4 +90,3 @@ target_tracking --debug={False/True} --mode={camera, image, video} --input={hoge
 - RGBDdetection::get_target_moment: cg + moment + depth
 - RGBDdetection::get_target_circle: cg + radius + depth
 - RGBDdetection::get_rectangle: rectangle; cg + x1, y1, x2, y2 
-
