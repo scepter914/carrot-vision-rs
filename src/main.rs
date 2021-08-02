@@ -2,8 +2,7 @@ extern crate image;
 // extern crate imageproc;
 
 use riprs::object_detection::threshold_detection;
-use riprs::riprs_cv_lib::convertor::rgb_convertor;
-use riprs::riprs_cv_lib::convertor::visualize_rgb_threshold;
+use riprs::riprs_cv_lib::convertor::rgb_to_binary;
 use riprs::riprs_cv_lib::logger;
 
 fn main() {
@@ -13,7 +12,7 @@ fn main() {
     // let path_image = "data/ball_2.jpg";
     let input_image = image::open(input_image_path).unwrap().to_rgb8();
 
-    let rgb_threshold = rgb_convertor::RGBThreshold {
+    let rgb_threshold = rgb_to_binary::RGBThreshold {
         high_threshold: image::Rgb([255, 255, 80]),
         low_threshold: image::Rgb([180, 0, 0]),
     };
@@ -24,7 +23,7 @@ fn main() {
     //     .save(logger.get_full_path("result.png"))
     //     .unwrap();
     let rgb_disassembled_image =
-        visualize_rgb_threshold::get_rgb_threshold_debug_image(&input_image, &rgb_threshold);
+        rgb_to_binary::get_rgb_threshold_debug_image(&input_image, &rgb_threshold);
     rgb_disassembled_image
         .save(logger.get_full_path("result_rgb_layer.png"))
         .unwrap();
