@@ -3,6 +3,7 @@ extern crate image;
 
 use riprs::object_detection::threshold_detection;
 use riprs::riprs_cv_lib::convertor::rgb_convertor;
+use riprs::riprs_cv_lib::convertor::visualize_rgb_threshold;
 use riprs::riprs_cv_lib::logger;
 
 fn main() {
@@ -13,8 +14,8 @@ fn main() {
     let input_image = image::open(input_image_path).unwrap().to_rgb8();
 
     let rgb_threshold = rgb_convertor::RGBThreshold {
-        high_threshold: image::Rgb([255, 200, 45]),
-        low_threshold: image::Rgb([100, 0, 0]),
+        high_threshold: image::Rgb([255, 255, 80]),
+        low_threshold: image::Rgb([180, 0, 0]),
     };
 
     // let binarized_image =
@@ -23,7 +24,7 @@ fn main() {
     //     .save(logger.get_full_path("result.png"))
     //     .unwrap();
     let rgb_disassembled_image =
-        rgb_threshold::combine_rgb_disassembled_image(&input_image, &rgb_threshold);
+        visualize_rgb_threshold::get_rgb_threshold_debug_image(&input_image, &rgb_threshold);
     rgb_disassembled_image
         .save(logger.get_full_path("result_rgb_layer.png"))
         .unwrap();
