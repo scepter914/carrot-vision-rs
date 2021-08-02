@@ -2,8 +2,8 @@ extern crate image;
 // extern crate imageproc;
 
 use riprs::object_detection::threshold_detection;
+use riprs::riprs_cv_lib::convertor::rgb_convertor;
 use riprs::riprs_cv_lib::logger;
-use riprs::
 
 fn main() {
     let logger = logger::Logger::new("data/result/");
@@ -13,14 +13,12 @@ fn main() {
     let input_image = image::open(input_image_path).unwrap().to_rgb8();
 
     let rgb_threshold = rgb_convertor::RGBThreshold {
-        r_high: 255,
-        r_low: 100,
-        g_high: 200,
-        g_low: 0,
-        b_high: 45,
-        b_low: 0,
+        high_threshold: image::Rgb([255, 200, 45]),
+        low_threshold: image::Rgb([100, 0, 0]),
     };
-    // let binarized_image = rgb_threshold::binalize_rgb(&input_image, &rgb_threshold);
+
+    // let binarized_image =
+    //     rgb_convertor::image_rgb_to_binary_by_rgb_threshold(&input_image, &rgb_threshold);
     // binarized_image
     //     .save(logger.get_full_path("result.png"))
     //     .unwrap();

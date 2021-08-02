@@ -59,4 +59,5 @@ pub fn get_rgb_threshold_debug_image(image: &RgbImage, rgb_threshold: &RGBThresh
             combined_image.put_pixel(width + i, 3 * height + j, *pixel);
         }
     }
+    return combined_image;
 }
