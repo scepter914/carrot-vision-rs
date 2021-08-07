@@ -29,6 +29,7 @@ impl RGBThreshold {
         return self.low_threshold[2];
     }
 }
+
 pub fn convert_to_binary_image_by_threshold(
     image: &RgbImage,
     rgb_threshold: &RGBThreshold,

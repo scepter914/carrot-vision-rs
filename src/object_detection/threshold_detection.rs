@@ -1,7 +1,8 @@
 extern crate image;
 extern crate imageproc;
 
-use image::GrayImage;
+use image::{GrayImage, RgbImage};
+use imageproc::drawing::draw_filled_circle;
 use imageproc::point::Point;
 
 pub fn get_cg_from_binary(image: &GrayImage) -> Point<f32> {
@@ -22,4 +23,15 @@ pub fn get_cg_from_binary(image: &GrayImage) -> Point<f32> {
     cg.x = cg.x / number as f32;
     cg.y = cg.y / number as f32;
     return cg;
+}
+
+pub fn get_cg_debug_image(image: &RgbImage, point: &Point<f32>) -> RgbImage {
+    let point_size = image.width() / 80;
+    let cg_image = draw_filled_circle(
+        image,
+        (point.x as i32, point.y as i32),
+        point_size as i32,
+        image::Rgb([0, 0, 255]),
+    );
+    return cg_image;
 }
