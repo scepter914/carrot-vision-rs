@@ -64,6 +64,6 @@ fn main() {
     let input_image_ = image::open(input_image_path).unwrap().to_rgb8();
     let input_image = imageops::resize(&input_image_, 400, 320, imageops::Gaussian);
 
-    threshold_detection(&input_image, &logger);
+    //threshold_detection(&input_image, &logger);
     threshold_detection_with_debug(&input_image, &logger, true, true);
 }

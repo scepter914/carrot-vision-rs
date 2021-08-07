@@ -3,13 +3,9 @@
 
 - /examples
   - /config
-    - camera_internal_param.yaml
-    - camera_external_param.yaml
-    - target_tracking_param.yaml
-    - calibration_camera_param.yaml
-  - target_tracking.rs
+  - threshold_object_detection.rs
   - calibration_camera.rs
-  - calculate_fps.rs
+  - rosrust_efficient_det.rs
 - /src
   - /tool
     - calibration_camera.rs
@@ -19,9 +15,9 @@
   - /object_detection
     - threshold_detection.rs
     - threshold_detection_depth.rs
-    - dnn_detection.rs
+    - efficient_det.rs
   - /ros
-    - ros_pub.rs
+    - ros_publish.rs
 - /ros_package
   - package.xml
   - /launch
@@ -77,25 +73,26 @@ target_tracking --debug={False/cg/threshold} --input={hoge/image.png, hoge/video
 
 ```
 output_directory: /result
-camera:
+camera_input:
   width:
   height:
   fps:
+camera_internal_param
+camera_external_param
+target_tracking_param
+calibration_camera_param
 ```
 
-### threshold_detection.rs: 
+### threshold_detection.rs:
 
 - RGBtheres, HSVtheres
 - RGBdetection::get_target_cg: cg
-- RGBdetection::get_target_moment: cg + moment 
-- RGBdetection::get_target_circle: cg + radius
-- RGBdetection::get_target_circle_optitau: cg + radius + optical_tau
-- RGBdetection::get_rectangle: cg + rectangle; x1, y1, x2, y2 
+- RGBdetection::get_target_moment: cg + moment
+- RGBdetection::get_target_optical_tau: optical_tau
+  - input: scequence moment
 
-### threshold_detection_depth.rs: 
+### threshold_detection_depth.rs:
 
 - RGBDtheres, RGBtheres, HSVDtheres, HSVtheres
 - RGBDdetection::get_target_cg: cg + depth
 - RGBDdetection::get_target_moment: cg + moment + depth
-- RGBDdetection::get_target_circle: cg + radius + depth
-- RGBDdetection::get_rectangle: rectangle; cg + x1, y1, x2, y2 
