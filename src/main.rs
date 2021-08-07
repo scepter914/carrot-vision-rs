@@ -15,6 +15,17 @@ fn threshold_detection(input_image: &RgbImage, logger: &logger::Logger) -> () {
         high_threshold: image::Rgb([255, 255, 80]),
         low_threshold: image::Rgb([100, 0, 0]),
     };
+    let binarized_image =
+        rgb_to_binary::convert_to_binary_image_by_threshold(&input_image, &rgb_threshold);
+    let cg: Point<f32> = threshold_detection::get_cg_from_binary(&binarized_image);
+    debug::print_point_info(&cg, "cg");
+}
+
+fn threshold_detection_with_debug(input_image: &RgbImage, logger: &logger::Logger) -> () {
+    let rgb_threshold = rgb_to_binary::RGBThreshold {
+        high_threshold: image::Rgb([255, 255, 80]),
+        low_threshold: image::Rgb([100, 0, 0]),
+    };
 
     let benchmark = debug::Benchmark::set_start_time();
     let binarized_image =
@@ -44,5 +55,7 @@ fn main() {
     // let path_image = "data/ball_2.jpg";
     let input_image_ = image::open(input_image_path).unwrap().to_rgb8();
     let input_image = imageops::resize(&input_image_, 400, 320, imageops::Gaussian);
+
     threshold_detection(&input_image, &logger);
+    threshold_detection_with_debug(&input_image, &logger);
 }

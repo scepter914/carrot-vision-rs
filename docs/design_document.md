@@ -10,13 +10,12 @@
   - target_tracking.rs
   - calibration_camera.rs
   - calculate_fps.rs
-- /tests
 - /src
   - /tool
     - calibration_camera.rs
   - /geometory
     - self_window.rs: input cg return x1, y1, x2, y2
-    - object_2d_to_3d.rs circle, rectangleの3次元推定(model仮定)
+    - object_2d_to_3d.rs: circle, rectangle 3d estimation using model assumption
   - /object_detection
     - threshold_detection.rs
     - threshold_detection_depth.rs
@@ -26,6 +25,7 @@
 - /ros_package
   - package.xml
   - /launch
+- /tests
 
 ### /riprs_cv_lib
 
