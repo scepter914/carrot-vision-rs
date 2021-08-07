@@ -64,13 +64,23 @@
 ## Detail
 ### ros_package
 
-- 画像で通信しないようにする
-- inputは無しでoutputに画像をcompressしてdebugするかどうか
+- To process with high-speed, not subscribe image by ros topic
+  - But publish compress image for debug option
 
 ### target_tracking.rs
 
 ```
-target_tracking --debug={False/True} --mode={camera, image, video} --input={hoge/image.png, hoge/video.mp4} --output={/result} --config={config/config.yaml}
+target_tracking --debug={False/cg/threshold} --input={hoge/image.png, hoge/video.mp4, dev/video0} --config={config/config.yaml}
+```
+
+- config file
+
+```
+output_directory: /result
+camera:
+  width:
+  height:
+  fps:
 ```
 
 ### threshold_detection.rs: 
