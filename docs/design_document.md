@@ -66,7 +66,7 @@
 ### target_tracking.rs
 
 ```
-target_tracking --debug={False/cg/threshold} --input={hoge/image.png, hoge/video.mp4, dev/video0} --config={config/config.yaml}
+target_tracking --debug={Error/Warn/Info/Debug/Trace} --input={hoge/image.png, hoge/video.mp4, dev/video0} --config={config/config.yaml}
 ```
 
 - config file
