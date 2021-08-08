@@ -1,6 +1,7 @@
 extern crate image;
 extern crate imageproc;
 
+use log::{debug, error, info, trace, warn};
 use std::time::{Duration, Instant};
 
 use image::RgbImage;
@@ -20,7 +21,7 @@ impl Benchmark {
 
     pub fn print_bench_time(&self) -> () {
         let end = self.start_time.elapsed();
-        println!(
+        info!(
             "Process {}.{:03} msec",
             end.as_micros() / 1000,
             end.as_micros() % 1000,
@@ -30,8 +31,8 @@ impl Benchmark {
 
 // RGB image
 pub fn print_image_info(image: &RgbImage) -> () {
-    println!("dimensions {:?}", image.dimensions());
-    //println!("{:?}", self.image.color());
+    info!("dimensions {:?}", image.dimensions());
+    //info!("{:?}", self.image.color());
 }
 
 pub fn print_pixel_from_point(image: &RgbImage, point: Point<f32>) -> () {
@@ -40,10 +41,10 @@ pub fn print_pixel_from_point(image: &RgbImage, point: Point<f32>) -> () {
 
 pub fn print_pixel(image: &RgbImage, x: u32, y: u32) -> () {
     let pixel: &image::Rgb<u8> = image.get_pixel(x, y);
-    println!("RGB : {}, {}, {}", pixel[0], pixel[1], pixel[2]);
+    info!("RGB : {}, {}, {}", pixel[0], pixel[1], pixel[2]);
 }
 
 // Point
 pub fn print_point_info(point: &Point<f32>, name: &str) -> () {
-    println!("{} : x {}, y {}", name, point.x, point.y);
+    info!("{} : x {}, y {}", name, point.x, point.y);
 }
