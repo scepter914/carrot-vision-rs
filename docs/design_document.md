@@ -79,19 +79,13 @@
 ### target_tracking.rs
 
 ```
-target_tracking --input={hoge/image.png, hoge/video.mp4, dev/video0} --config={config/config.yaml}
-```
-
-- debug
-
-```
-RUST_LOG={error/warn/info/debug/trace} cargo run --release
+cargo run target_tracking --input={hoge/image.png, hoge/video.mp4, dev/video0} --config={config/config.yaml}
 ```
 
 - config file
 
 ```
-output_directory: /result
+output_directory: /home/user_name/result/
 camera_input:
   width:
   height:
