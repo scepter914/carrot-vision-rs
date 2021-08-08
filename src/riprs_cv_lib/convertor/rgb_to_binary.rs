@@ -30,6 +30,10 @@ impl RGBThreshold {
     }
 }
 
+/// - If below condition satisfy, then return 255 (white)
+///     - R threshold low < pixel.r < R threshold high
+///     - G threshold low < pixel.g < G threshold high
+///     - B threshold low < pixel.b < B threshold high
 pub fn convert_to_binary_image_by_threshold(
     image: &RgbImage,
     rgb_threshold: &RGBThreshold,
@@ -63,11 +67,14 @@ fn convert_to_binary_pixel_by_threshold(pixel: &Rgb<u8>, rgb_threshold: &RGBThre
     return value;
 }
 
-// debug image
-// rgb: rgb, binary
-// r: gray, binary
-// g: gray, binary
-// b: gray, binary
+/// - Debug image consist of 8 image
+///     - input rgb image, binary image
+///     - R gray image, binary image from R image
+///     - G gray image, binary image from G image
+///     - B gray image, binary image from B image
+/// - Example image
+///     - <https://github.com/scepter914/highspeed_cv/docs/result_rgb_layer.png>
+
 pub fn get_rgb_threshold_debug_image(image: &RgbImage, rgb_threshold: &RGBThreshold) -> RgbImage {
     let width = image.width();
     let height = image.height();
