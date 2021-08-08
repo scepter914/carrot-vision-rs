@@ -39,9 +39,11 @@
     - gray_convertor.rs
     - rgbd_convertor.rs
   - /interface
-    - camera_interface.rs: input:camera
-    - image_interface.rs: input, output: mp4
-    - output_interface.rs: output:eathernet
+    - web_camera_interface.rs
+    - real_sense_interface.rs
+    - image_interface.rs
+    - video_interface.rs
+    - eathernet_interface.rs
 
 ### /efficient_det
 
@@ -58,11 +60,22 @@
       - train.py
 
 ## Detail
-### ros_package
 
-- To process with high-speed, not subscribe image by ros topic
-  - But publish compress image for debug option
+### threshold_detection.rs:
 
+- RGBtheres, HSVtheres
+- RGBdetection::get_target_cg: cg
+- RGBdetection::get_target_moment: cg + moment
+- RGBdetection::get_target_optical_tau: optical_tau
+  - input: scequence moment
+
+### threshold_detection_depth.rs:
+
+- RGBDtheres, RGBtheres, HSVDtheres, HSVtheres
+- RGBDdetection::get_target_cg: cg + depth
+- RGBDdetection::get_target_moment: cg + moment + depth
+
+## Application
 ### target_tracking.rs
 
 ```
@@ -83,16 +96,7 @@ target_tracking_param
 calibration_camera_param
 ```
 
-### threshold_detection.rs:
+### ros_package
 
-- RGBtheres, HSVtheres
-- RGBdetection::get_target_cg: cg
-- RGBdetection::get_target_moment: cg + moment
-- RGBdetection::get_target_optical_tau: optical_tau
-  - input: scequence moment
-
-### threshold_detection_depth.rs:
-
-- RGBDtheres, RGBtheres, HSVDtheres, HSVtheres
-- RGBDdetection::get_target_cg: cg + depth
-- RGBDdetection::get_target_moment: cg + moment + depth
+- To process with high-speed, not subscribe image by ros topic
+  - But publish compress image for debug option
