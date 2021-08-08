@@ -79,7 +79,13 @@
 ### target_tracking.rs
 
 ```
-target_tracking --debug={Error/Warn/Info/Debug/Trace} --input={hoge/image.png, hoge/video.mp4, dev/video0} --config={config/config.yaml}
+target_tracking --input={hoge/image.png, hoge/video.mp4, dev/video0} --config={config/config.yaml}
+```
+
+- debug
+
+```
+RUST_LOG={error/warn/info/debug/trace} cargo run --release
 ```
 
 - config file
@@ -94,6 +100,9 @@ camera_internal_param
 camera_external_param
 target_tracking_param
 calibration_camera_param
+rgb_threshold:
+  high_threshold :  [255, 255, 80]
+  low_threshold : [100, 0, 0]
 ```
 
 ### ros_package
