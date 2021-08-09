@@ -30,20 +30,23 @@
     - file.rs:
     - performance.rs (calculate time)
     - logger.rs
-  - /image
-    - visualization.rs: cg, bbox
   - /convertor
     - visualize_rgb_threshold.rs
     - rgb_convertor.rs
     - hsv_convertor.rs
     - gray_convertor.rs
     - rgbd_convertor.rs
-  - /interface
-    - web_camera_interface.rs
-    - real_sense_interface.rs
-    - image_interface.rs
-    - video_interface.rs
+  - /output
+    - visualization.rs: cg, bbox
     - eathernet_interface.rs
+    - video.rs
+
+### simple_image_interface
+
+- web_camera_interface.rs
+- real_sense_interface.rs
+- image_interface.rs
+- video_interface.rs
 
 ### /efficient_det
 
