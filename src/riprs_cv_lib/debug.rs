@@ -35,16 +35,19 @@ pub fn print_image_info(image: &RgbImage) -> () {
     //info!("{:?}", self.image.color());
 }
 
-pub fn print_pixel_from_point(image: &RgbImage, point: Point<f32>) -> () {
-    print_pixel(image, point.x as u32, point.y as u32);
+pub fn print_pixel_from_point(debug_message: &str, image: &RgbImage, point: Point<f32>) -> () {
+    print_pixel(debug_message, image, point.x as u32, point.y as u32);
 }
 
-pub fn print_pixel(image: &RgbImage, x: u32, y: u32) -> () {
+pub fn print_pixel(debug_message: &str, image: &RgbImage, x: u32, y: u32) -> () {
     let pixel: &image::Rgb<u8> = image.get_pixel(x, y);
-    info!("RGB : {}, {}, {}", pixel[0], pixel[1], pixel[2]);
+    debug!(
+        "{}, RGB : {}, {}, {}",
+        debug_message, pixel[0], pixel[1], pixel[2]
+    );
 }
 
 // Point
-pub fn print_point_info(point: &Point<f32>, name: &str) -> () {
-    info!("{} : x {}, y {}", name, point.x, point.y);
+pub fn print_point_info(debug_message: &str, point: &Point<f32>) -> () {
+    debug!("{}, x {}, y {}", debug_message, point.x, point.y);
 }

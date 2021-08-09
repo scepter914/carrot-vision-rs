@@ -5,6 +5,7 @@ use image::imageops;
 use image::RgbImage;
 use imageproc::point::Point;
 use log::{log_enabled, Level};
+use std::env;
 
 use riprs::object_detection::threshold_detection;
 use riprs::riprs_cv_lib::convertor::rgb_to_binary;
@@ -25,9 +26,9 @@ fn threshold_detection(input_image: &RgbImage, logger: &logger::Logger) -> () {
             rgb_to_binary::convert_to_binary_image_by_threshold(&input_image, &rgb_threshold);
         cg = threshold_detection::get_cg_from_binary(&binarized_image);
         benchmark.print_bench_time();
-        debug::print_point_info(&cg, "cg");
+        debug::print_point_info("cg", &cg);
         if log_enabled!(Level::Debug) {
-            debug::print_pixel_from_point(&input_image, cg);
+            debug::print_pixel_from_point("cg", &input_image, cg);
         }
     } else {
         binarized_image =
@@ -54,7 +55,15 @@ fn threshold_detection(input_image: &RgbImage, logger: &logger::Logger) -> () {
 }
 
 fn main() {
-    let logger = logger::Logger::init("data/result/");
+    let log_level;
+    let args: Vec<String> = env::args().collect();
+    if args.len() < 2 {
+        log_level = "Error";
+    } else {
+        log_level = &args[1];
+    }
+
+    let logger = logger::Logger::init(log_level, "data/result");
 
     let input_image_path = "data/ball_2.jpg";
     let input_image_ = image::open(input_image_path).unwrap().to_rgb8();
