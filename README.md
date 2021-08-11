@@ -1,6 +1,6 @@
-# Hishspeed CV library
+# realtime-cv-rs
 
-- This repository is Real-time Image Processing library by RuSt
+- This repository is real-time image processing library by rust
 
 ## Support
 
