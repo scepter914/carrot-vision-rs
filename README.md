@@ -9,10 +9,12 @@
 - [ ] Calculation moment for binarized image (mask image)
 - [ ] EfficientDet lapper
 
-## with debug
+## Get started
+
+- Run example
 
 ```
-cargo run --release --log={error(e)/warn(w)/info(i)/debug(d)/trace(t)}
+cargo run --example threshold_tracking --input={dev/video0, path_to_image.png, path_to_video.mp4} --config={config/config.yaml}
 ```
 
 - Log::Level
@@ -26,3 +28,19 @@ cargo run --release --log={error(e)/warn(w)/info(i)/debug(d)/trace(t)}
   - Trace : Debug image from each loop to analyse bug
     - Not Work real-time process, saving all debug image
     - Should use movie (mp4) instead of camera real-time input because of heavy processing
+- config file
+
+```
+output_directory: /home/user_name/result/
+camera_input:
+  width:
+  height:
+  fps:
+camera_internal_param:
+camera_external_param:
+target_tracking_param:
+calibration_camera_param:
+rgb_threshold:
+  high_threshold :  [255, 255, 80]
+  low_threshold : [100, 0, 0]
+```

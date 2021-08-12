@@ -7,10 +7,10 @@ use imageproc::point::Point;
 use log::{log_enabled, Level};
 use std::env;
 
-use riprs::object_detection::threshold_detection;
-use riprs::riprs_cv_lib::convertor::rgb_to_binary;
-use riprs::riprs_cv_lib::debug;
-use riprs::riprs_cv_lib::logger;
+use realtime_cv::object_detection::threshold_detection;
+use realtime_cv_lib::convertor::rgb_to_binary;
+use realtime_cv_lib::debug;
+use realtime_cv_lib::logger;
 
 fn threshold_detection(input_image: &RgbImage, logger: &logger::Logger) -> () {
     let rgb_threshold = rgb_to_binary::RGBThreshold {
