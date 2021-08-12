@@ -9,8 +9,9 @@
 - [ ] Calculation moment for binarized image (mask image)
 - [ ] EfficientDet lapper
 
-## Get started
+## Get started (Under construction)
 
+- add dependencies
 - Run example
 
 ```
