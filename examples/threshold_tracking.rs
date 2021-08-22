@@ -9,10 +9,9 @@ use std::env;
 
 use realtime_cv::object_detection::threshold_detection;
 use realtime_cv_lib::convertor::rgb_to_binary;
-use realtime_cv_lib::debug;
-use realtime_cv_lib::logger;
+use realtime_cv_lib::{debug, image_util, logger};
 
-fn threshold_detection(input_image: &RgbImage, logger: &logger::Logger) -> () {
+fn threshold_detection(input_image: &RgbImage, logger: &logger::Logger) {
     let rgb_threshold = rgb_to_binary::RGBThreshold {
         high_threshold: image::Rgb([255, 255, 80]),
         low_threshold: image::Rgb([100, 0, 0]),
@@ -39,9 +38,13 @@ fn threshold_detection(input_image: &RgbImage, logger: &logger::Logger) -> () {
     // If log level is Debug or Trace, then save the image of center gravity debug image
     if log_enabled!(Level::Debug) {
         let cg_image = threshold_detection::get_cg_debug_image(&input_image, &cg);
-        cg_image
-            .save(logger.get_time_path("threshold_detection_", "png"))
-            .unwrap();
+        // cg_image
+        //     .save(logger.get_time_path("threshold_detection_", "png"))
+        //     .unwrap();
+        image_util::save_ppm_file(
+            &cg_image,
+            std::path::Path::new(&logger.get_time_path("threshold_detection_", "ppm")),
+        );
     }
 
     // If log level is Trace, then save the image of threshold rgb debug image
