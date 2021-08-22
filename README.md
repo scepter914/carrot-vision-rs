@@ -11,7 +11,14 @@
 
 ## Get started (Under construction)
 
+- install
+  - See <https://github.com/scepter914/simple-image-interface-rs>
 - add dependencies
+
+```
+
+```
+
 - Run example
 
 ```
