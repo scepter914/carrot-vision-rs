@@ -1,6 +1,3 @@
-extern crate image;
-extern crate imageproc;
-
 use image::{GrayImage, RgbImage};
 use imageproc::drawing::draw_filled_circle;
 use imageproc::point::Point;

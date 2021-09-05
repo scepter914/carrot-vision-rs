@@ -1,6 +1,3 @@
-extern crate image;
-extern crate imageproc;
-
 use image::imageops;
 use image::RgbImage;
 use imageproc::point::Point;
