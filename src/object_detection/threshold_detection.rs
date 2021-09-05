@@ -19,7 +19,7 @@ pub fn get_cg_from_binary(image: &GrayImage) -> Point<f32> {
     }
     cg.x = cg.x / number as f32;
     cg.y = cg.y / number as f32;
-    return cg;
+    cg
 }
 
 pub fn get_cg_debug_image(image: &RgbImage, point: &Point<f32>) -> RgbImage {
@@ -30,5 +30,5 @@ pub fn get_cg_debug_image(image: &RgbImage, point: &Point<f32>) -> RgbImage {
         point_size as i32,
         image::Rgb([0, 0, 255]),
     );
-    return cg_image;
+    cg_image
 }
