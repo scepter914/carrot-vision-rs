@@ -18,8 +18,7 @@ fn threshold_detection(input_image: &RgbImage, logger: &logger::Logger) {
     let cg: Point<f32>;
     if log_enabled!(Level::Info) {
         let benchmark = debug::Benchmark::set_start_time();
-        binarized_image =
-            rgb_to_binary::convert_to_binary_image_by_threshold(&input_image, &rgb_threshold);
+        binarized_image = rgb_to_binary::convert_by_threshold(&input_image, &rgb_threshold);
         cg = threshold_detection::get_cg_from_binary(&binarized_image);
         benchmark.print_bench_time();
         debug::print_point_info("cg", &cg);
@@ -27,8 +26,7 @@ fn threshold_detection(input_image: &RgbImage, logger: &logger::Logger) {
             debug::print_pixel_from_point("cg", &input_image, cg);
         }
     } else {
-        binarized_image =
-            rgb_to_binary::convert_to_binary_image_by_threshold(&input_image, &rgb_threshold);
+        binarized_image = rgb_to_binary::convert_by_threshold(&input_image, &rgb_threshold);
         cg = threshold_detection::get_cg_from_binary(&binarized_image);
     }
 
@@ -41,7 +39,8 @@ fn threshold_detection(input_image: &RgbImage, logger: &logger::Logger) {
         image_util::save_ppm_file(
             &cg_image,
             std::path::Path::new(&logger.get_time_path("threshold_detection_", "ppm")),
-        );
+        )
+        .unwrap();
     }
 
     // If log level is Trace, then save the image of threshold rgb debug image
@@ -63,9 +62,9 @@ fn main() {
         log_level = &args[1];
     }
 
-    let logger = logger::Logger::init(log_level, "data/result");
+    let logger = logger::Logger::init(log_level, "./data/result");
 
-    let input_image_path = "data/ball_2.jpg";
+    let input_image_path = "./data/ball_2.jpg";
     let input_image_ = image::open(input_image_path).unwrap().to_rgb8();
     let input_image = imageops::resize(&input_image_, 640, 360, imageops::Gaussian);
     debug::print_image_info(&input_image);
