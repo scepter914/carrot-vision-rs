@@ -11,7 +11,6 @@ readme = "README.md"
 edition = "2018"
 publish = false
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 chrono = "0.4"
@@ -20,4 +19,4 @@ simplelog = "0.10.0"
 image = "0.23.14"
 imageproc = "0.22.0"
 realtime_cv_lib = { path = "../realtime-cv-lib-rs" }
-carrot_util_library = { path = "../carrot-util-library" }
+carrot_util_library = { path = "../carrot-util-library-rs" }
