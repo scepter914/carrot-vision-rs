@@ -1,4 +1,4 @@
-# realtime-cv
+# realtime_cv
 
 - This repository is real-time image processing library by rust
 

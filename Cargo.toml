@@ -3,8 +3,8 @@ name = "realtime_cv"
 version = "0.1.0"
 description = "Real-time Image processing library"
 keywords = ["image", "vision", "real-time"]
-authors = ["scepter914 <st14.828soccer@gmail.com>"]
-repository = "https://github.com/scepter914/realtime-cv-rs"
+authors = ["scepter914 <scepter914@gmail.com>"]
+repository = "https://github.com/scepter914/realtime_cv"
 # documentation = "https://docs.rs/realtime_cv"
 license = "MIT"
 readme = "README.md"
@@ -18,5 +18,4 @@ log = "0.4.0"
 simplelog = "0.10.0"
 image = "0.23.14"
 imageproc = "0.22.0"
-realtime_cv_lib = { path = "../realtime-cv-lib-rs" }
-carrot_util_library = { path = "../carrot-util-library-rs" }
+carrot_image_utils = { path = "../carrot_image_utils" }
