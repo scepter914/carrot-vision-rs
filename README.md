@@ -1,4 +1,4 @@
-# realtime-cv-rs
+# realtime-cv
 
 - This repository is real-time image processing library by rust
 
@@ -12,7 +12,7 @@
 ## Get started (Under construction)
 
 - install
-  - See <https://github.com/scepter914/simple-image-interface-rs>
+  - See <https://github.com/scepter914/simple-image-interface>
 - add dependencies
 
 ```
