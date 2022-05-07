@@ -15,16 +15,6 @@ use carrot_cv_utils::util::path;
 
 use realtime_cv::object_detection::threshold_detection;
 
-fn threshold_detection(
-    input_image: &RgbImage,
-    rgb_threshold: &rgb_to_binary::RGBThreshold,
-) -> (GrayImage, Point<f32>) {
-    let binarized_image: GrayImage =
-        rgb_to_binary::convert_by_threshold(input_image, rgb_threshold);
-    let cg: Point<f32> = threshold_detection::get_cg_from_binary(&binarized_image);
-    (binarized_image, cg)
-}
-
 fn set_log_level(log_level: &str) -> LevelFilter {
     let logger_level: LevelFilter;
     match &log_level[..] {
@@ -65,19 +55,20 @@ fn main() {
         benchmark.start();
     }
 
-    let binarized_image: GrayImage;
-    let cg: Point<f32>;
-    (binarized_image, cg) = threshold_detection(&input_image, &rgb_threshold);
+    let binarized_image: GrayImage =
+        rgb_to_binary::convert_by_threshold(&input_image, &rgb_threshold);
+    let cg: Point<f32> = threshold_detection::get_cg_from_binary(&binarized_image);
+
     debug!("{}", benchmark.get_bench_time());
     debug!(
         "cg: {:?}, {}",
         cg,
-       debug::print_pixel_from_point(&input_image, cg),
+        debug::get_pixel_string(&input_image, cg)
     );
 
     // Debug image
     if log_enabled!(Level::Debug) {
-        let cg_image = threshold_detection::get_cg_debug_image(&input_image, &cg);
+        let cg_image = debug::draw_point(&input_image, &cg, image::Rgb([0, 0, 255]));
         let file_path = logger
             .root_result_directory
             .join(path::get_time_filepath("threshold_detection_", "ppm"));
