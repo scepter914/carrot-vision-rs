@@ -8,6 +8,7 @@ use std::env;
 
 use carrot_cv_utils::image::convertor::rgb_to_binary;
 use carrot_cv_utils::image::rgb_image::debug;
+use carrot_cv_utils::image::rgb_image::draw;
 use carrot_cv_utils::image::rgb_image::file;
 use carrot_cv_utils::util::benchmark::Benchmark;
 use carrot_cv_utils::util::logger::Logger;
@@ -44,7 +45,7 @@ fn main() {
     // Set input
     let input_image_path = "./data/ball.jpg";
     let input_image_ = image::open(input_image_path).unwrap().to_rgb8();
-    let input_image = imageops::resize(&input_image_, 640, 360, imageops::Gaussian);
+    let input_image = imageops::resize(&input_image_, 1280, 720, imageops::Gaussian);
 
     // Threshold detection
     let rgb_threshold = rgb_to_binary::RGBThreshold {
@@ -68,7 +69,8 @@ fn main() {
 
     // Debug image
     if log_enabled!(Level::Debug) {
-        let cg_image = debug::draw_point(&input_image, &cg, image::Rgb([0, 0, 255]));
+        let mut cg_image = draw::draw_point(&input_image, cg, image::Rgb([0, 0, 255]));
+        cg_image = draw::draw_rect(&cg_image, cg, 480, 480, image::Rgb([0, 0, 255]));
         let file_path = logger
             .root_result_directory
             .join(path::get_time_filepath("threshold_detection_", "ppm"));
