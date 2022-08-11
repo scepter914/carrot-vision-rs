@@ -18,5 +18,5 @@ log = "0.4.0"
 simplelog = "0.10.0"
 image = "0.23.14"
 imageproc = "0.22.0"
-carrot_utils = { path = "../carrot-utils-rs/carrot_utils" }
-carrot_image_utils = { path = "../carrot-utils-rs/carrot_image_utils" }
+carrot_utils = { path = "../../carrot-utils-rs/carrot_utils" }
+carrot_image_utils = { path = "../../carrot-utils-rs/carrot_image_utils" }
