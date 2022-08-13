@@ -10,7 +10,7 @@ license = "MIT"
 readme = "README.md"
 edition = "2021"
 publish = false
-
+exclude = ["data/*"]
 
 [dependencies]
 chrono = "0.4"
