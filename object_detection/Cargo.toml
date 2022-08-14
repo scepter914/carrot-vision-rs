@@ -13,10 +13,8 @@ publish = false
 exclude = ["data/*"]
 
 [dependencies]
-chrono = "0.4"
-log = "0.4.0"
-simplelog = "0.10.0"
-image = "0.23.14"
-imageproc = "0.22.0"
-carrot_utils = "0.1.0"
-carrot_image_utils = "0.1.0"
+log = "0.4"
+image = "0.24"
+imageproc = "0.23"
+carrot_utils = "0.1"
+carrot_image_utils = "0.1"
