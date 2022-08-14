@@ -20,27 +20,20 @@ use carrot_utils::path::format_time_macro;
 use object_detection::object_detection::threshold_detection;
 
 fn set_log_level(log_level: &str) -> LevelFilter {
-    let logger_level: LevelFilter;
     match &log_level[..] {
-        "Error" => logger_level = LevelFilter::Error,
-        "Warn" => logger_level = LevelFilter::Warn,
-        "Info" => logger_level = LevelFilter::Info,
-        "Debug" => logger_level = LevelFilter::Debug,
-        "Trace" => logger_level = LevelFilter::Trace,
-        _ => logger_level = LevelFilter::Error,
+        "Error" => LevelFilter::Error,
+        "Warn" => LevelFilter::Warn,
+        "Info" => LevelFilter::Info,
+        "Debug" => LevelFilter::Debug,
+        "Trace" => LevelFilter::Trace,
+        _ => LevelFilter::Error,
     }
-    logger_level
 }
 
 fn main() {
     // Set logger and benchmark
     let args: Vec<String> = env::args().collect();
-    let log_level_input: &str;
-    if args.len() < 2 {
-        log_level_input = "Error";
-    } else {
-        log_level_input = &args[1];
-    }
+    let log_level_input: &str = if args.len() < 2 { "Error" } else { &args[1] };
     let logger_level = set_log_level(log_level_input);
     let logger = Logger::new(
         "./data/result/{TIME_SEC}",
