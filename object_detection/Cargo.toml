@@ -16,5 +16,5 @@ exclude = ["data/*"]
 log = "0.4"
 image = "0.24"
 imageproc = "0.23"
-carrot_utils = "0.1"
+carrot_utils = "0.1.2"
 carrot_image_utils = "0.1"
