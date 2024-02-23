@@ -1,11 +1,11 @@
 [package]
-name = "object_detection"
+name = "binarized_image_object_detection"
 version = "0.1.0"
-description = "Object detection for image"
+description = "Object detection based on binarized image"
 keywords = ["image", "vision", "real-time"]
 authors = ["scepter914 <scepter914@gmail.com>"]
-repository = "https://github.com/scepter914/object-detection-rs"
-# documentation = "https://docs.rs/object_detection"
+repository = "https://github.com/scepter914/object-detection-rs/"
+# documentation = "https://docs.rs/binarized_image_object_detection"
 license = "MIT"
 readme = "README.md"
 edition = "2021"
@@ -16,5 +16,5 @@ exclude = ["data/*"]
 log = "0.4"
 image = "0.24"
 imageproc = "0.23"
-carrot_utils = "0.1.2"
-carrot_image_utils = "0.1"
+carrot_utils = "0.1.6"
+carrot_image_utils = "0.1.5"
