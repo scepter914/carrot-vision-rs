@@ -9,7 +9,6 @@ repository = "https://github.com/scepter914/object-detection-rs/"
 license = "MIT"
 readme = "README.md"
 edition = "2021"
-publish = false
 exclude = ["data/*"]
 
 [dependencies]
