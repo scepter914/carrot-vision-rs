@@ -1,31 +1,24 @@
 # binarized_object_detection
 
+This crate is library for object detection based on binarized image.
 
-This crate is library for binarized based object detection.
-
-## Support
-
-- [x] Calculation center of gravity for binarized image
-- [ ] Calculation moment for binarized image
+- Document
+  - [crate.io](https://crates.io/crates/binarized_object_detection)
+  - [docs.rs](https://docs.rs/crate/binarized_object_detection/latest)
+- Supported feature
+  - [x] Calculation center of gravity for binarized image
+  - [ ] Calculation moment for binarized image
 
 ## Get started
-
-- Add dependencies
-  - See <https://github.com/scepter914/simple-image-interface-rs>
-
-```
-sudo apt install libv4l-dev
-```
 
 - Run example
 
 ```sh
-# for image
-cargo run --example threshold_tracking --input=path_to_image.png --config=config/config.yaml
-
-# for camera device
-cargo run --example threshold_tracking --input=dev/video0 --config=config/config.yaml
-
-# for moview
-cargo run --example threshold_tracking --input=path_to_movie.mp4 --config=config/config.yaml
+cargo run --release --example binarized_image_object_detection
 ```
+
+## History
+
+- For next release
+- v0.1.0
+  - publish initial crate
