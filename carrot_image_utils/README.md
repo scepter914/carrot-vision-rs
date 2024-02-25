@@ -5,6 +5,8 @@ This crate is util library for image processing library by rust.
 ## History
 
 - For new release
+- v0.1.7
+  - [Caution! Change interface] Refactor whole parts in this crate to use trait feature
 - v0.1.6
   - Move repository
 - v0.1.5
