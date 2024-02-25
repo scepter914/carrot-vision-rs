@@ -1,6 +1,6 @@
 [package]
 name = "carrot_image_utils"
-version = "0.1.7"
+version = "0.1.8"
 description = "Utils library for Image processing"
 edition = "2021"
 keywords = ["image", "vision"]

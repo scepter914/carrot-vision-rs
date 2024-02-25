@@ -17,9 +17,11 @@ impl<T: NumCast> CarrotPoint<T> for Point<T> {
     }
 }
 
-pub fn to_rect(center_point: Point<f32>, width: u32, height: u32) -> Rect {
-    let x;
-    let y;
-    (x, y) = center_point.to_i32_tuple();
-    Rect::at(x - width as i32 / 2, y - height as i32 / 2).of_size(width, height)
+pub fn to_rect<T: NumCast>(center_point: Point<f32>, width: T, height: T) -> Rect {
+    let (x, y): (i32, i32) = center_point.to_i32_tuple();
+    Rect::at(
+        x - width.to_i32().unwrap() / 2,
+        y - height.to_i32().unwrap() / 2,
+    )
+    .of_size(width.to_u32().unwrap(), height.to_u32().unwrap())
 }
