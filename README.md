@@ -1,11 +1,18 @@
-# object-detection-rs
+# carrot-vision-rs
 
 This repository have crates for image object detection.
 
-- [object_detection](/object_detection)
+## crate
+### utils
 
-The crate for object detection
+- [carrot_image_utils](carrot_image_utils)
 
-- [binarized_object_detection](/binarized_object_detection)
+The util crate for image processing.
 
-The crate for object detection with binarized image
+### object detetion
+
+- [binarized_object_detection](binarized_object_detection)
+
+The crate for object detection with binarized image.
+
+
