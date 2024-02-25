@@ -1,10 +1,11 @@
 # carrot_image_utils
 
-This crate is util library for image processing library by rust.
+This crate is util library for image processing by rust.
 
 ## History
 
 - For new release
+  - Fix manifest and README.md
 - v0.1.8
   - Fix to_rect function
 - v0.1.7

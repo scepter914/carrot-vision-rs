@@ -1,7 +1,7 @@
 [package]
 name = "carrot_image_utils"
 version = "0.1.8"
-description = "Utils library for Image processing"
+description = "Util library for image processing"
 edition = "2021"
 keywords = ["image", "vision"]
 authors = ["scepter914 <scepter914@gmail.com>"]
