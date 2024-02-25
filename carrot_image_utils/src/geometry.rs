@@ -3,15 +3,12 @@ use imageproc::rect::Rect;
 use num::NumCast;
 
 pub trait CarrotPoint<T: NumCast> {
-    type i32_tuple;
-    fn to_tuple(&self) -> (T, T);
+    fn to_tuple(self) -> (T, T);
     fn to_i32_tuple(&self) -> (i32, i32);
 }
 
 impl<T: NumCast> CarrotPoint<T> for Point<T> {
-    type i32_tuple = (i32, i32);
-
-    fn to_tuple(&self) -> (T, T) {
+    fn to_tuple(self) -> (T, T) {
         (self.x, self.y)
     }
 
