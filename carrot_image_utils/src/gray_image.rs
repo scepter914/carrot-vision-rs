@@ -1,27 +1,22 @@
 use image::{GrayImage, Luma, Rgb, RgbImage};
 
 pub trait CarrotGrayImage {
-    type Gray;
-    type Rgb;
-    fn to_binary(&self, low_threshold: u8, high_threshold: u8) -> Self::Gray;
-    fn to_binary_by_otsu(&self) -> Self::Gray;
-    fn to_rgb(&self) -> Self::Rgb;
-    fn to_r(&self) -> Self::Rgb;
-    fn to_b(&self) -> Self::Rgb;
-    fn to_g(&self) -> Self::Rgb;
+    fn to_binary(&self, low_threshold: u8, high_threshold: u8) -> GrayImage;
+    fn to_binary_by_otsu(&self) -> GrayImage;
+    fn to_rgb(&self) -> RgbImage;
+    fn to_r(&self) -> RgbImage;
+    fn to_b(&self) -> RgbImage;
+    fn to_g(&self) -> RgbImage;
 }
 
 impl CarrotGrayImage for GrayImage {
-    type Gray = GrayImage;
-    type Rgb = RgbImage;
-
     /// - Function
     /// Convert gray image to binary image by threshold
     /// If low_threshold <= pixel_value <= high_threshold then, output pixel is 255 (white color)
     ///
     /// - Use case
     /// If you want to a get binary image from pixel above threshold of a gray image, you should use convert_gray_to_binary_within_threshold(gray_image, threshold, 255)
-    fn to_binary(&self, low_threshold: u8, high_threshold: u8) -> Self::Gray {
+    fn to_binary(&self, low_threshold: u8, high_threshold: u8) -> GrayImage {
         let width = self.width();
         let height = self.height();
         let mut binary_image = GrayImage::new(width, height);
@@ -35,13 +30,13 @@ impl CarrotGrayImage for GrayImage {
         binary_image
     }
 
-    fn to_binary_by_otsu(&self) -> Self::Gray {
+    fn to_binary_by_otsu(&self) -> GrayImage {
         let otsu_level = imageproc::contrast::otsu_level(self);
         imageproc::contrast::threshold(self, otsu_level)
     }
 
     /// convert from gray image to rgb image
-    fn to_rgb(&self) -> Self::Rgb {
+    fn to_rgb(&self) -> RgbImage {
         let width = self.width();
         let height = self.height();
         let mut rgb_image = RgbImage::new(width, height);
@@ -54,7 +49,7 @@ impl CarrotGrayImage for GrayImage {
         rgb_image
     }
 
-    fn to_r(&self) -> Self::Rgb {
+    fn to_r(&self) -> RgbImage {
         let width = self.width();
         let height = self.height();
         let mut rgb_image = RgbImage::new(width, height);
@@ -67,7 +62,7 @@ impl CarrotGrayImage for GrayImage {
         rgb_image
     }
 
-    fn to_g(&self) -> Self::Rgb {
+    fn to_g(&self) -> RgbImage {
         let width = self.width();
         let height = self.height();
         let mut rgb_image = RgbImage::new(width, height);
@@ -80,7 +75,7 @@ impl CarrotGrayImage for GrayImage {
         rgb_image
     }
 
-    fn to_b(&self) -> Self::Rgb {
+    fn to_b(&self) -> RgbImage {
         let width = self.width();
         let height = self.height();
         let mut rgb_image = RgbImage::new(width, height);
