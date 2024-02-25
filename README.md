@@ -7,12 +7,10 @@ This repository have crates for image object detection.
 
 - [carrot_image_utils](carrot_image_utils)
 
-The util crate for image processing.
+The util library for image processing.
 
-### object detetion
+### object detection
 
 - [binarized_object_detection](binarized_object_detection)
 
 The crate for object detection with binarized image.
-
-
